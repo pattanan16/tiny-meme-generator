@@ -60,11 +60,16 @@ function App() {
   };
 
   const addText = () => {
-    const id = Date.now();
-    const next = [...layers, defaultText(id)];
-    commit(next);
-    setSelectedId(id);
+  const id = Date.now();
+  const textCount = layers.filter((layer) => layer.type === "text").length;
+  const newText = {
+    ...defaultText(id),
+    y: Math.min(18 + textCount * 15, 85)
   };
+  const next = [...layers, newText];
+  commit(next);
+  setSelectedId(id);
+};
 
   const addEmoji = (emoji) => {
     const id = Date.now();
@@ -211,10 +216,27 @@ function App() {
   };
 
   const startDrag = (event) => {
-    if (!selected) return;
-    dragRef.current = { ...pointerPosition(event) };
-    canvasRef.current.setPointerCapture(event.pointerId);
-  };
+  const p = pointerPosition(event);
+  const width = canvasRef.current.width;
+  const height = canvasRef.current.height;
+
+  const clickedLayer = [...layers].reverse().find((layer) => {
+    const x = (layer.x / 100) * width;
+    const y = (layer.y / 100) * height;
+    const size = layer.fontSize || 48;
+
+    return (
+      Math.abs(p.x - (x / width) * 100) < (size / width) * 100 * 2 &&
+      Math.abs(p.y - (y / height) * 100) < (size / height) * 100
+    );
+  });
+
+  if (!clickedLayer) return;
+
+  setSelectedId(clickedLayer.id);
+  dragRef.current = p;
+  canvasRef.current.setPointerCapture(event.pointerId);
+};
 
   const drag = (event) => {
     if (!dragRef.current || !selected) return;
