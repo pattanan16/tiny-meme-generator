@@ -349,9 +349,27 @@ function App() {
               ))}
             </div>
             <div className="layer-actions">
-              <button onClick={() => moveLayer("up")}>↑</button>
-              <button onClick={() => moveLayer("down")}>↓</button>
-              <button onClick={deleteSelected}>Delete</button>
+              <button
+                onClick={() => moveLayer("up")}
+                disabled={layers.findIndex((layer) => layer.id === selectedId) >= layers.length - 1}
+                title="Move layer up"
+             >
+                 ↑
+              </button>
+              <button
+                onClick={() => moveLayer("down")}
+                disabled={layers.findIndex((layer) => layer.id === selectedId) <= 0}
+                title="Move layer down"
+             >
+                 ↓
+              </button>
+              <button
+                onClick={deleteSelected}
+                disabled={!selected}
+                title="Delete selected layer"
+     >
+                Delete
+              </button>
             </div>
           </section>
 
