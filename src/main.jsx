@@ -329,8 +329,8 @@ function App() {
             <button onClick={addText}>＋ Text</button>
             <div className="emoji-row">
               {["😂", "🔥", "❤️", "😎", "💀", "⭐", "🤣", "😍", "😡", "👍", "💯", "🎉"].map((e) => (
-  <button key={e} onClick={() => addEmoji(e)}>{e}</button>
-))}
+               <button key={e} onClick={() => addEmoji(e)}>{e}</button>
+           ))}
             </div>
           </section>
 
