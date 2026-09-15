@@ -375,6 +375,11 @@ function App() {
 
           <section>
             <h2>4. Effects</h2>
+             <button
+              onClick={() => setEffects({ grayscale: 0, brightness: 100, contrast: 100, blur: 0 })}
+          >
+              Reset Effects
+            </button>
             {[
               ["grayscale", "Grayscale", 0, 100],
               ["brightness", "Brightness", 50, 150],
