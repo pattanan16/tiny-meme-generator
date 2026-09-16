@@ -314,8 +314,8 @@ function App() {
           <button onClick={redo} disabled={!future.length}>
             ↷ Redo ({future.length})
           </button>
-          <button onClick={saveLocal}>Save</button>
-          <button onClick={loadLocal}>Load</button>
+          <button onClick={saveLocal}>💾 Save</button>
+          <button onClick={loadLocal}>📂 Load</button>
           <button className="primary" onClick={downloadPNG}>Download PNG</button>
         </div>
       </header>
