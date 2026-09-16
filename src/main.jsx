@@ -308,8 +308,12 @@ function App() {
           <p>Upload an image, add layers, edit them, and export your meme.</p>
         </div>
         <div className="top-actions">
-          <button onClick={undo} disabled={!history.length}>↶ Undo</button>
-          <button onClick={redo} disabled={!future.length}>↷ Redo</button>
+          <button onClick={undo} disabled={!history.length}>
+            ↶ Undo ({history.length})
+          </button>
+          <button onClick={redo} disabled={!future.length}>
+            ↷ Redo ({future.length})
+          </button>
           <button onClick={saveLocal}>Save</button>
           <button onClick={loadLocal}>Load</button>
           <button className="primary" onClick={downloadPNG}>Download PNG</button>
