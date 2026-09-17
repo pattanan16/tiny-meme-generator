@@ -43,7 +43,6 @@ git merge feature/upload-image
 Then repeat for:
 
 - `feature/text-layers`
-- `feature/drag-layers`
 - `feature/emoji-stickers`
 - `feature/layer-controls`
 - `feature/image-effects`
